@@ -3,6 +3,7 @@ certifi==2017.11.5
 chardet==3.0.4
 idna==2.6
 Logbook==1.1.0
+numpy==1.13.3
 pkg-resources==0.0.0
 requests==2.18.4
 urllib3==1.22

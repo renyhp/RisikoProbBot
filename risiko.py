@@ -20,14 +20,12 @@ def sdadata(chat, message, args):
         result = "⚠ ️*Comando:* `/sdadata <att> <def>`\n`<att>` = numero di dadi dell'attaccante\n`<def>` = numero di dadi del difensore\n_L'attaccante non può tirare meno dadi del difensore._"
     else:
         result = "🎲 _Sdadata:_ *{} vs {}*\n".format(att, dif)
+        tot = poss[att-1, dif-1] # gli array sono 0-based
+        dim = max((int(math.log10(x)) + 1 for x in fav[att-1, dif-1,:dif+1]))
         for i in range(dif+1):
-            result += "\n{}:`  {:>{w}}/{}` = {}".format(i, str(fav[att-1, dif-1, i]), str(poss[att-1, dif-1]), num_to_perc(fav[att-1, dif-1, i]/poss[att-1, dif-1]), w = max_ord_grandezza(fav[att-1, dif-1,:dif]))
+            result += "\n{}:`  {:{w}d}/{:d}` = {}".format(i, fav[att-1, dif-1, i], tot, num_to_perc(fav[att-1, dif-1, i]/tot), w = dim)
     chat.send(result)
 
-
-
-def max_ord_grandezza(arr):
-    return max([math.log10(x)+1 for x in arr])
 
 def num_to_perc(n):
     if not 0 <= n <= 1:

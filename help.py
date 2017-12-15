@@ -9,13 +9,17 @@ def aiuto(chat, message, args):
 <code>/sdadata &lt;att&gt; &lt;def&gt;</code>
 <i>Elenca le probabilità di abbattere i possibili numeri di carri del difensore con una singola sdadata di</i> <code>&lt;att&gt;</code> <i>dadi contro</i> <code>&lt;def&gt;</code>
 Ulteriori informazioni: /guida_sdadata
-	        """
+
+<code>/vittoria [&lt;att&gt; &lt;def&gt;]</code>
+<i>Se</i> <code>&lt;att&gt;</code> <i>e</i> <code>&lt;def&gt;</code> <i>sono specificati, restituisce le probabilità di vittoria dell'attaccante. Altrimenti, invia la tabella completa delle probabilità di vittoria dell'attaccante.</i>
+Ulteriori informazioni: /guida_vittoria
+	        """, syntax = "HTML"
         )
     
 def guida(chat, message, args):
     if len(args) > 0:
         return
-    chat.send("Clicca su un comando per leggere la guida corrispondente.\n\n/guida_sdadata")
+    chat.send("Clicca su un comando per leggere la guida corrispondente.\n\n/guida_sdadata\n/guida_vittoria", syntax = "plain")
 
 
 def guida_comandi(chat, message, matches):
@@ -32,6 +36,14 @@ def guida_comandi(chat, message, matches):
         "-- in 2275 casi (cioè con probabilità 29.3%) l'attaccante abbatte 0 carri del difensore;\n"
         "-- in 2611 casi (cioè con probabilità 33.6%) l'attaccante abbatte 1 carro del difensore;\n"
         "-- in 2890 casi (cioè con probabilità 37.2%) l'attaccante abbatte 2 carri del difensore."
+        )
+    elif comando == "vittoria":
+        result = (
+        "*Formato*: `/vittoria [<att> <def>]`\n\n"
+        "Considera che l'attaccante, durante l'attacco, continui ad attaccare finché non abbatte tutti i carri del difensore (nel qual caso vince) oppure è costretto a tirare meno dadi del difensore (nel qual caso perde).\n"
+        "Il comando restituisce la probabilità di vincere attaccando con `<att>` carri contro `<def>`.\n"
+        "Se `<att>` e `<def>` non sono specificati, il comando restituisce una tabella in cui, all'incrocio tra la riga `n` e la colonna `m`, è descritta la probabilità di vincere attaccando con `n` carri contro `m`.\n"
+        "Nota: il massimo numero di carri, sia per l'attaccante che per il difensore, è 40."
         )
     else:
         return

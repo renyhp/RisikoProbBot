@@ -3,13 +3,15 @@ import math
 import datetime
 from PIL import Image, ImageDraw, ImageFont
 
-font, fontbold = (ImageFont.truetype("FreeSans"+x+".ttf", 50) for x in ("", "Bold")) # viva python & pigrizia
-w, h = 350, 75 # dimensioni di una cella di tabella
-wi = 150 # la colonna di intestazione la facciamo più piccola
-offw, offh = 20, 12 # coordinate, rispetto all'angolo top-left, del top-left di ogni testo all'interno della propria cella
-wl = 3 # spessore riga della griglia
-wli = 7 # spessore riga intermedia
-wlb = 10 # spessore riga intestazione
+renyhp = 133748469
+
+font, fontbold = (ImageFont.truetype("FreeSans"+x+".ttf", 15) for x in ("", "Bold")) # viva python & pigrizia
+w, h = 100, 23 # dimensioni di una cella di tabella
+wi = 45 # la colonna di intestazione la facciamo più piccola
+offw, offh = 6, 3 # coordinate, rispetto all'angolo top-left, del top-left di ogni testo all'interno della propria cella
+wl = 1 # spessore riga della griglia
+wli = 3 # spessore riga intermedia
+wlb = 5 # spessore riga intestazione
 color = 75 # luminosità caratteri intermedi
 
 def num_to_perc(n):

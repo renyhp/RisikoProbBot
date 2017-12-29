@@ -13,13 +13,17 @@ Ulteriori informazioni: /guida_sdadata
 <code>/vittoria [&lt;att&gt; &lt;def&gt;]</code>
 <i>Se</i> <code>&lt;att&gt;</code> <i>e</i> <code>&lt;def&gt;</code> <i>sono specificati, restituisce le probabilità di vittoria dell'attaccante. Altrimenti, invia la tabella completa delle probabilità di vittoria dell'attaccante.</i>
 Ulteriori informazioni: /guida_vittoria
+
+<code>/passaggi &lt;att&gt; &lt;def&gt;</code>
+<i>Invia la tabella delle probabilità di passaggio per ogni possibile situazione a partire dalla situazione in cui l'attaccante ha</i> <code>&lt;att&gt;</code> <i>carri e il difensore ha</i> <code>&lt;def&gt;</code> <i>carri.</i>
+Ulteriori informazioni: /guida_passaggi
 	        """, syntax = "HTML"
         )
     
 def guida(chat, message, args):
     if len(args) > 0:
         return
-    chat.send("Clicca su un comando per leggere la guida corrispondente.\n\n/guida_sdadata\n/guida_vittoria", syntax = "plain")
+    chat.send("Clicca su un comando per leggere la guida corrispondente.\n\n/guida_sdadata\n/guida_vittoria\n/guida_passaggi", syntax = "plain")
 
 
 def guida_comandi(chat, message, matches):
@@ -43,6 +47,13 @@ def guida_comandi(chat, message, matches):
         "Considera che l'attaccante, durante l'attacco, continui ad attaccare finché non abbatte tutti i carri del difensore (nel qual caso vince) oppure è costretto a tirare meno dadi del difensore (nel qual caso perde).\n"
         "Il comando restituisce la probabilità di vincere attaccando con `<att>` carri contro `<def>`.\n"
         "Se `<att>` e `<def>` non sono specificati, il comando restituisce una tabella in cui, all'incrocio tra la riga `n` e la colonna `m`, è descritta la probabilità di vincere attaccando con `n` carri contro `m`.\n"
+        "Nota: il massimo numero di carri, sia per l'attaccante che per il difensore, è 40."
+        )
+    elif comando == "passaggi":
+        result = (
+        "*Formato*: `/passaggi <att> <def>`\n\n"
+        "Considera che l'attaccante abbia inizialmente `<att>` carri e il difensore `<def>`, ed inizi ad attaccare, continuando finché non vince, o finché non perde.\n"
+        "Il comando restituisce una tabella in cui, all'incrocio tra la riga `n` e la colonna `m`, è descritta la probabilità che, in un qualsiasi momento, ci si ritrovi con il numero di carri dell'attaccante ridotto ad `n` e il numero di carri del difensore ad `m`, _indipendentemente dal numero di attacchi effettuati_.\n"
         "Nota: il massimo numero di carri, sia per l'attaccante che per il difensore, è 40."
         )
     else:

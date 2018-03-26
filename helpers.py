@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 renyhp = 133748469
 
-font, fontbold = (ImageFont.truetype("FreeSans"+x+".ttf", 15) for x in ("", "Bold")) # viva python & pigrizia
+font, fontbold = (ImageFont.truetype("./FreeSans"+x+".ttf", 15) for x in ("", "Bold")) # viva python & pigrizia
 w, h = 100, 23 # dimensioni di una cella di tabella
 wi = 45 # la colonna di intestazione la facciamo più piccola
 offw, offh = 6, 3 # coordinate, rispetto all'angolo top-left, del top-left di ogni testo all'interno della propria cella

@@ -74,7 +74,7 @@ def passaggi(bot, chat, message, args):
     attmedi = numpy.average(range(att+1), weights=result[:,0]) #definizione di media!
     probsconf = tuple(numpy.sum(result[i,(i+1):]) for i in (0,1,2)) #probabilità di rimanere sconfitto con "i" carri
     #ora fai la media. non è così semplice! se M1 e M2 sono due medie pesate parziali su pesi totali W1 e W2, la media pesata è (M1W1+M2W2)/(W1+W2).
-    medieparziali = tuple(numpy.average(range(i+1, dif+1), weights=result[i,(i+1):]) for i in (0,1,2))
+    medieparziali = tuple(numpy.average(range(i+1, dif+1), weights=result[i,(i+1):]) if probsconf[i] != 0 else 0 for i in (0,1,2))
     difmedi = numpy.average(medieparziali, weights=probsconf)
     probsconf = sum(probsconf)
     

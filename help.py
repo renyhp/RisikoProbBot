@@ -68,7 +68,7 @@ def guida_comandi(chat, message, matches):
         result = (
         "*Formato*: `/difesa <def>`\n\n"
         "Considera che il difensore abbia `<def>` carri sul suo territorio.\n"
-        "- Nella colonna A (risp. _nella colonna B_), alla riga `n`, è descritta la probabilità che l'attaccante, partendo da `n` carri e attaccando senza sosta, vinca, rimanendo con solo 1 carro (risp. _con solo 2 carri_]. (Nota: si tratta di carri _utili_, ossia non viene contato il carro che deve sempre rimanere a difesa del territorio).\n"
+        "- Nella colonna A [risp. _nella colonna B_], alla riga `n`, è descritta la probabilità che l'attaccante, partendo da `n` carri e attaccando senza sosta, vinca, rimanendo con solo 1 carro [risp. _con solo 2 carri_]. (Nota: si tratta di carri _utili_, ossia non viene contato il carro che deve sempre rimanere a difesa del territorio).\n"
         "- Nella colonna P, alla riga `n`, è descritta la probabilità che l'attaccante, attaccando senza sosta, vinca, perdendo `n` carri. Questa probabilità non dipende dal numero di carri iniziali, fermo restando che il numero di carri rimanenti deve essere almeno 3 (altrimenti bisogna leggere le colonne precedenti).\n"
         "- Nella colonna TOT, alla riga `n`, è descritta la probabilità totale che l'attaccante vinca partendo da `n` carri e attaccando senza sosta.\n"
         "- Viene inoltre fornito il numero medio di carri persi in caso di vittoria. Anche questo numero non dipende dal numero di carri iniziali dell'attaccante. Esso è calcolato considerando solo i casi in cui l'attaccante parte da un massimo di 40 carri, e dunque è frutto di un'approssimazione tanto più valida quanto più è probabile che con 40 carri l'attaccante vinca.\n"

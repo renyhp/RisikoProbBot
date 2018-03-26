@@ -78,9 +78,9 @@ def passaggi(bot, chat, message, args):
     difmedi = numpy.average(medieparziali, weights=probsconf)
     probsconf = sum(probsconf)
     
-    caption = "⚔️ Passaggi: {} vs {}\n\n• Vittoria: {} (mediamente con {:.2f} carri)\n• Sconfitta: {} (mediamente con {:.2f} carri)".format(att, dif, num_to_perc(probvitt), attmedi, num_to_perc(probsconf), difmedi)
+    caption = "⚔️ _Passaggi:_ *{} vs {}*\n\n• Vittoria: `{}` (mediamente con `{:.2f}` carri)\n• Sconfitta: `{}` (mediamente con `{:.2f}` carri)".format(att, dif, num_to_perc(probvitt), attmedi, num_to_perc(probsconf), difmedi)
     nomefile = mat_to_img(result, tuple(range(dif+1)))
-    bot.api.call("sendDocument", { "chat_id" : chat.id, "caption" : caption }, {"document" : open(nomefile, "rb") })
+    bot.api.call("sendDocument", { "chat_id" : chat.id, "caption" : caption, "parse_mode" : "Markdown" }, {"document" : open(nomefile, "rb") })
     os.remove(nomefile)
         
         
@@ -99,9 +99,9 @@ def difesa(bot, chat, message, args):
     result[:,3]=numpy.sum(matrice[:,dif,:,0], 1)
     carripersi = numpy.average(range(41), weights=result[:,2])
     
-    caption = "🛡 Difesa: {}\n\nNumero medio di carri persi in caso di vittoria: {:.2f}\nNota: si tratta di un valore approssimato, tanto più vicino al vero quanto più TOT(40) è vicino a 100%.".format(dif, carripersi)
+    caption = "🛡 _Difesa:_ *{}*\n\nNumero medio di carri persi in caso di vittoria: `{:.2f}`\n_N.B. si tratta di un valore approssimato, tanto più vicino al vero quanto più TOT(40) è vicino a 100%._".format(dif, carripersi)
     nomefile = mat_to_img(result, ("A", "B", "P", "TOT"))
-    bot.api.call("sendDocument", { "chat_id" : chat.id, "caption" : caption }, {"document" : open(nomefile, "rb") })
+    bot.api.call("sendDocument", { "chat_id" : chat.id, "caption" : caption, "parse_mode" : "Markdown" }, {"document" : open(nomefile, "rb") })
     os.remove(nomefile)
     
     
